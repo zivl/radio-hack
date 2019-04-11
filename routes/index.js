@@ -1,8 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var audio = require('osx-audio');
-
-var input = new audio.Input();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,8 +13,7 @@ router.get('/stream', function (req, res, next) {
   // res.set('accept-ranges', 'bytes');
   res.set('Transfer-Encoding', 'chunked')
 
-  input.pipe(res);
-
+  //TODO: someone connects here
 })
 
 module.exports = router;

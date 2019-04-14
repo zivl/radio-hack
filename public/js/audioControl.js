@@ -30,16 +30,16 @@ function handlePlay(value) {
     circleTextPath.innerHTML = circleTextOptions.pause;
   }
   togglePlay();
-  handleMute(!audioState.playing);
+  handleMute();
 }
 
 function toggleMute(value) {
   audioState.muted = value;
-  handleMute(value);
+  handleMute();
 }
 
-function handleMute(value) {
-  value !== undefined ? audioPlayer.muted = value : audioPlayer.muted = !audioPlayer.muted
+function handleMute() {
+  audioPlayer.muted = audioState.muted || !audioState.playing;
 }
 
 function togglePlay() {

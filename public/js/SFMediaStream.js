@@ -91,7 +91,7 @@
   
       var scope = this;
   
-      scope.debug = true;
+      scope.debug = false;
       scope.playing = false;
       scope.latency = 0;
       scope.mimeType = null;
@@ -106,7 +106,7 @@
       var bufferHeader = false;
       var mediaBuffer = false;
   
-      var audioElement = new Audio();
+      var audioElement = document.querySelector('audio') || new Audio();
       var audioNode = scope.audioContext.createMediaElementSource(audioElement);
   
       scope.connect = function(node){

@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h1><%= title %></h1>
+	<audio controls></audio>
 
 	<script type="text/javascript">
 		var mySocket = io("/", {transports:['websocket']});
@@ -38,7 +39,7 @@
 			mySocket.emit('requestBufferHeader', '');
 		}
 
-		setTimeout(function() {asStreamer();}, 3000);
+		setTimeout(function() {asStreamer();}, 1000);
 	</script>
 </body>
 </html>

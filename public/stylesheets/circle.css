@@ -8,7 +8,10 @@
                 background-color: transparent;
             }
             
-            .circle text { font-family: 'Helvetica Neue', Arial; font-size: 13px; letter-spacing: 1.1px }
+			.circle text { font-family: 'Helvetica Neue', Arial; font-size: 13px; letter-spacing: 1.1px }
+			.circle text[data-mode="play"] { letter-spacing: 1.1px }
+			.circle text[data-mode="offline"] { letter-spacing: 2px }
+			.circle text[data-mode="pause"] { letter-spacing: 1.9px }
 			
 			.circle svg { 
 			

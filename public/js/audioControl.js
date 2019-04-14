@@ -1,8 +1,9 @@
 const audioPlayer = document.querySelector('audio');
-const circleText = document.querySelector('#circle textPath');
+const circleText = document.querySelector('#circle text');
+const circleTextPath = document.querySelector('#circle textPath');
 const svg = document.querySelector('.icon-play');
 const svgPath = svg.querySelector('path');
-const circleTextOptions = {play: "Play Broadcast. Play Broadcast. Play Broadcast. ", pause: "Pause Broadcast. Pause Broadcast. Pause Broadcast. ", offline: "Pause Broadcast. Pause Broadcast. Pause Broadcast. "};
+const circleTextOptions = {pause: "Back to Live Broadcast. Back to Live Broadcast. ", play: "Pause Broadcast. Pause Broadcast. Pause Broadcast. ", offline: "Sorry… No Broadcast Now… Come Back Later… "};
 window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
@@ -20,9 +21,11 @@ function receiveMessage(event) {
 
 function handlePlay() {
   if (audioPlayer.muted) {
-    circleText.innerHTML = circleTextOptions.play;
+    circleText.setAttribute('data-mode', 'play');
+    circleTextPath.innerHTML = circleTextOptions.play;
   } else {
-    circleText.innerHTML = circleTextOptions.pause;
+    circleText.setAttribute('data-mode', 'pause');
+    circleTextPath.innerHTML = circleTextOptions.pause;
   }
   handleMute();
   togglePlay();

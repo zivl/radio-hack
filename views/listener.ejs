@@ -20,8 +20,8 @@
 				<circle cx="150" cy="100" r="75" fill="none"/>
 				<g>
 					<use xlink:href="#circlePath" fill="none"/>
-					<text fill="#000">
-						<textPath xlink:href="#circlePath">Pause Broadcast. Pause Broadcast. Pause Broadcast. </textPath>
+					<text fill="#000" data-mode="offline">
+						<textPath xlink:href="#circlePath">Sorry… No Broadcast Now… Come Back Later… </textPath>
 					</text>
 				</g>
 			</svg>
@@ -31,7 +31,7 @@
 				<path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path>
 			</svg>
 		</div>
-		<audio controls style="visibility: hidden;"></audio>
+		<audio controls volume="0.5" muted style="visibility: hidden;"></audio>
 	</div>
 	
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/AttrPlugin.min.js"></script>

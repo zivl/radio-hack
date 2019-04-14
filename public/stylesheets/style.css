@@ -17,6 +17,13 @@ body {
   right: 0;
 }
 
+.white-circle {
+  width: 230px;
+  height: 230px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+
 .icon-play {
 	cursor: pointer;
   }

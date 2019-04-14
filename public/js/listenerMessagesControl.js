@@ -6,7 +6,7 @@ function receiveMessage(event) {
   // const data = JSON.parse(event.data);
   const data = event.data;
   switch (data.action) {
-    case 'volume':
+    case 'VOLUME_CHANGE':
       audioPlayer.volume = data.value;
       break;
   }

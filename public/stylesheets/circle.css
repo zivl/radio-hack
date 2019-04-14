@@ -1,0 +1,53 @@
+
+
+            #circle {
+                background-color: red;
+            }
+            
+            #circle text { font-family: 'Helvetica Neue', Arial; font-size: 13px; letter-spacing: 1.1px }
+			
+			#circle svg { width: 100%;
+			
+			  -webkit-animation-name: rotate;
+				 -moz-animation-name: rotate;
+				  -ms-animation-name: rotate;
+				   -o-animation-name: rotate;
+					  animation-name: rotate;
+			  -webkit-animation-duration: 10s;
+				 -moz-animation-duration: 15s;
+				  -ms-animation-duration: 15s;
+				   -o-animation-duration: 15s;
+					  animation-duration: 15s;
+			  -webkit-animation-iteration-count: infinite;
+				 -moz-animation-iteration-count: infinite;
+				  -ms-animation-iteration-count: infinite;
+				   -o-animation-iteration-count: infinite;
+					  animation-iteration-count: infinite;
+			  -webkit-animation-timing-function: linear;
+				 -moz-animation-timing-function: linear;
+				  -ms-animation-timing-function: linear;
+				   -o-animation-timing-function: linear;
+					  animation-timing-function: linear;
+			
+			}
+			
+			@-webkit-keyframes rotate {
+				from { -webkit-transform: rotate(0); }
+				to { -webkit-transform: rotate(360deg); }
+			}
+			@-moz-keyframes rotate {
+				from { -moz-transform: rotate(0); }
+				to { -moz-transform: rotate(360deg); }
+			}
+			@-ms-keyframes rotate {
+				from { -ms-transform: rotate(0); }
+				to { -ms-transform: rotate(360deg); }
+			}
+			@-o-keyframes rotate {
+				from { -o-transform: rotate(0); }
+				to { -o-transform: rotate(360deg); }
+			}
+			@keyframes rotate {
+				from { transform: rotate(0); }
+				to { transform: rotate(360deg); }
+			}

@@ -19,13 +19,12 @@ function receiveMessage(event) {
 }
 
 function handlePlay() {
-  if (audioPlayer.paused) {
-    audioPlayer.play();
+  if (audioPlayer.muted) {
     circleText.innerHTML = circleTextOptions.play;
   } else {
-    audioPlayer.pause();
     circleText.innerHTML = circleTextOptions.pause;
   }
+  handleMute();
   togglePlay();
 }
 

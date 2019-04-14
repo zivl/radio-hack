@@ -49,7 +49,7 @@
   };
   
   // Unlock mobile media security
-  (function(){
+//   (function(){
       var mobileMediaUnlock = function(e){
           if(!window.AudioContext) return removeListener();
           ScarletsMedia.audioContext = new AudioContext();
@@ -81,7 +81,7 @@
       document.addEventListener('touchstart', mobileMediaUnlock, true);
       document.addEventListener('touchend', mobileMediaUnlock, true);
       document.addEventListener('click', mobileMediaUnlock, true);
-  })();
+//   })();
   // Minimum 3 bufferElement
   var ScarletsAudioStreamer = function(chunksDuration){
       var bufferElement = 3;
@@ -2294,6 +2294,7 @@
   };
   
   if(moduleMode){
+      global.MediaUnlock = mobileMediaUnlock;
       global.Media = ScarletsMedia;
       global.MediaEffect = ScarletsMediaEffect;
       global.AudioStreamer = ScarletsAudioStreamer;
@@ -2302,6 +2303,7 @@
       global.MediaPresenter = ScarletsMediaPresenter;
   }
   else{
+      global.ScarletsMediaUnlock = mobileMediaUnlock;
       global.ScarletsMedia = ScarletsMedia;
       global.ScarletsMediaEffect = ScarletsMediaEffect;
       global.ScarletsAudioStreamer = ScarletsAudioStreamer;

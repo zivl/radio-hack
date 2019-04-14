@@ -24,4 +24,12 @@ router.get('/media-stream', function (req, res) {
   res.render('mediaStream', { title: 'Wix Radio' });
 })
 
+router.get('/broadcaster', function (req, res) {
+  res.render('broadcaster', { title: 'Wix Radio Broadcaster' });
+})
+
+router.get('/listener', function (req, res) {
+  res.render('listener', { title: 'Wix Radio' });
+})
+
 module.exports = router;

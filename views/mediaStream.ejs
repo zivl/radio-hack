@@ -15,7 +15,7 @@
 	<button onclick="streamerEffect()">Effect (for streamer)</button>
 	<input type="text" id="debug"><br>
 	Presenter must be online before the streamer<br>
-	<div id="audioPlayerContainer"></div>
+	<!-- <div id="audioPlayerContainer"></div> -->
 
 	<script type="text/javascript">
 		var mySocket = io("/", {transports:['websocket']});
@@ -62,12 +62,12 @@
 				mySocket.on('bufferHeader', function(packet){
 					audioStreamer.setBufferHeader(packet);
 					
-					var audio = new Audio(audioStreamer.objectURL);
-					audio.controls = true;
-					// audio.crossOrigin = 'anonymous';
-					audio.volume = 0.25;
-					document.querySelector('#audioPlayerContainer').appendChild(audio);
-					audio.play();
+					// var audio = new Audio(audioStreamer.objectURL);
+					// audio.controls = true;
+					// // audio.crossOrigin = 'anonymous';
+					// audio.volume = 0.25;
+					// document.querySelector('#audioPlayerContainer').appendChild(audio);
+					// audio.play();
 				});
 
 				// Receive buffer and play it

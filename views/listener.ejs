@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<title>Streaming Test</title>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/js/SFMediaStream.js"></script>
+</head>
+<body>
+	<h1><%= title %></h1>
+
+	<script type="text/javascript">
+		var mySocket = io("/", {transports:['websocket']});
+		
+		// ===== Streamer =====
+		var audioStreamer = false;
+		function asStreamer(){
+			if(audioStreamer === false){
+				// Set latency to 100ms (Equal with presenter)
+				ScarletsMediaUnlock();
+				audioStreamer = new ScarletsAudioStreamer(100);
+				audioStreamer.playStream();
+
+				// Buffer header must be received first
+				mySocket.on('bufferHeader', function(packet){
+					audioStreamer.setBufferHeader(packet);
+				});
+
+				// Receive buffer and play it
+				mySocket.on('stream', function(packet){
+					audioStreamer.realtimeBufferPlay(packet)
+				});
+			}
+
+			// Request buffer header
+			mySocket.emit('requestBufferHeader', '');
+		}
+
+		setTimeout(function() {asStreamer();}, 3000);
+	</script>
+</body>
+</html>

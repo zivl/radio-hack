@@ -20,4 +20,8 @@ router.get('/views-counter', function (req, res) {
   res.json({ counter: (Math.random()*100).toFixed(0) });
 })
 
+router.get('/media-stream', function (req, res) {
+  res.render('mediaStream', { title: 'Wix Radio' });
+})
+
 module.exports = router;

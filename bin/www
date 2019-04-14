@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('live-broadcast:server');
 var http = require('http');
+var SocketIO = require('socket.io');
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +22,34 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+
+// Initialize socket.io
+var io = SocketIO({
+  perMessageDeflate: false // Disable compression
+}).listen(server);
+
+// Every new streamer must have the buffer header from the presenter
+var bufferHeader = null;
+
+// Event listener
+io.on('connection', function(socket){
+    /* Presenter */
+    socket.on('bufferHeader', function(packet){
+        // Buffer header can be saved on server so it can be passed to new user
+        bufferHeader = packet;
+        socket.broadcast.emit('bufferHeader', packet);
+    });
+
+    // Broadcast the received buffer
+    socket.on('stream', function(packet){
+        socket.broadcast.emit('stream', packet);
+    });
+
+    // Send buffer header to new user
+    socket.on('requestBufferHeader', function(){
+        socket.emit('bufferHeader', bufferHeader);
+    });
+});
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -76,6 +105,7 @@ function onError(error) {
       throw error;
   }
 }
+
 
 /**
  * Event listener for HTTP server "listening" event.

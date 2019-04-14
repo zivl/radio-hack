@@ -4,6 +4,7 @@ const circleTextPath = document.querySelector('#circle textPath');
 const svg = document.querySelector('.icon-play');
 const svgPath = svg.querySelector('path');
 const circleTextOptions = {pause: "Back to Live Broadcast. Back to Live Broadcast. ", play: "Pause Broadcast. Pause Broadcast. Pause Broadcast. ", offline: "Sorry… No Broadcast Now… Come Back Later… "};
+const audioState = {playing: false, muted: false, volume: 1};
 window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
@@ -14,21 +15,27 @@ function receiveMessage(event) {
       audioPlayer.volume = data.volume / 100;
       break;
     case 'TOGGLE_MUTE':
-      handleMute(data.value);
+      toggleMute(data.value);
       break;
   }
 }
 
-function handlePlay() {
-  if (audioPlayer.muted) {
+function handlePlay(value) {
+  value !== undefined ? audioState.playing = value : audioState.playing = !audioState.playing;
+  if (audioState.playing) {
     circleText.setAttribute('data-mode', 'play');
     circleTextPath.innerHTML = circleTextOptions.play;
   } else {
     circleText.setAttribute('data-mode', 'pause');
     circleTextPath.innerHTML = circleTextOptions.pause;
   }
-  handleMute();
   togglePlay();
+  handleMute(!audioState.playing);
+}
+
+function toggleMute(value) {
+  audioState.muted = value;
+  handleMute(value);
 }
 
 function handleMute(value) {

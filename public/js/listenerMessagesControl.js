@@ -7,7 +7,7 @@ function receiveMessage(event) {
   const data = event.data;
   switch (data.type) {
     case 'VOLUME_CHANGE':
-      audioPlayer.volume = data.value;
+      audioPlayer.volume = data.volume / 100;
       break;
   }
 }

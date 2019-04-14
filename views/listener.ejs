@@ -6,9 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 	<title>Streaming Test</title>
 	<link rel="stylesheet" href="/stylesheets/circle.css"/>
-	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript" src="/js/SFMediaStream.js"></script>
-	<script type="text/javascript" src="/js/listenerMessagesControl.js"></script>
 </head>
 <body>
 	<h1><%= title %></h1>
@@ -30,6 +27,10 @@
 	</div>
 	<audio controls style="visibility: hidden;"></audio>
 
+
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/js/SFMediaStream.js"></script>
+	<script type="text/javascript" src="/js/listenerMessagesControl.js"></script>
 	<script type="text/javascript">
 		var mySocket = io("/", {transports:['websocket']});
 		

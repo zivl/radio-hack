@@ -14,7 +14,7 @@ function receiveMessage(event) {
       audioPlayer.volume = data.volume / 100;
       break;
     case 'TOGGLE_MUTE':
-      handleMute();
+      handleMute(data.value);
       break;
   }
 }
@@ -31,8 +31,8 @@ function handlePlay() {
   togglePlay();
 }
 
-function handleMute() {
-  audioPlayer.muted = !audioPlayer.muted
+function handleMute(value) {
+  value !== undefined ? audioPlayer.muted = value : audioPlayer.muted = !audioPlayer.muted
 }
 
 function togglePlay() {

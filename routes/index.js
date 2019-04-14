@@ -16,4 +16,8 @@ router.get('/stream', function (req, res, next) {
   //TODO: someone connects here
 })
 
+router.get('/views-counter', function (req, res) {
+  res.json({ counter: (Math.random()*100).toFixed(0) });
+})
+
 module.exports = router;

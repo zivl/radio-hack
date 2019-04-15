@@ -4,15 +4,18 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-	<title>Streaming Test</title>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/broadcast.css"/>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript" src="/js/SFMediaStream.js"></script>
 </head>
 <body>
-	<h1><%= title %></h1>
-	<button onclick="asPresenter()">Broadcast</button>
-	<input type="text" id="debug">
-	<button onclick="stopRecording()">Stop Broadcasting</button>
+	<div class="main">
+		<button class="button record" onclick="asPresenter()">Broadcast</button>
+		<input type="text" id="debug">
+		<button class="button stop" onclick="stopRecording()">Stop</button>
+	</div>
+	<div class="img-container hide"><img src="/images/on-air.gif" /></div>
 
 
 	<script type="text/javascript">
@@ -22,6 +25,7 @@
 		// ===== Presenter =====
 		var presenterMedia = false;
 		function asPresenter(){
+			document.querySelector('.img-container').classList.remove('hide');
 			if(presenterMedia === false){
 				// Set latency to 100ms (Equal with streamer)
 				presenterMedia = new ScarletsMediaPresenter({
@@ -49,6 +53,7 @@
 		}
 
 		function stopRecording() {
+			document.querySelector('.img-container').classList.add('hide');
 			presenterMedia.stopRecording();
 		}
 		

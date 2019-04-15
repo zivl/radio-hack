@@ -7,7 +7,6 @@
 	<title><%= title %></title>
 	<link rel="stylesheet" href="/stylesheets/style.css"/>
 	<link rel="stylesheet" href="/stylesheets/circle.css"/>
-	<link rel="stylesheet" href="/stylesheets/play-pause.css"/>
 </head>
 <body>
 	<div class="main">
@@ -47,7 +46,7 @@
 		
 		// ===== Streamer =====
 		var audioStreamer = false;
-		var firstTime = false;
+		var firstTime = true;
 		function startAsSteamer() {
 			if (firstTime) {
 				asStreamer();

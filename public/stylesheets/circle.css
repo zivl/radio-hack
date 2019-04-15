@@ -12,7 +12,14 @@
 			.circle text[data-mode="play"] { letter-spacing: 1.1px }
 			.circle text[data-mode="offline"] { letter-spacing: 2px }
 			.circle text[data-mode="pause"] { letter-spacing: 1.9px }
-			
+			.circle text .show-on-offline,
+			.circle text .show-on-play,
+			.circle text .show-on-pause
+			 { opacity: 0; transition: opacity 0.5s ease-in;}
+			 .circle text[data-mode="offline"] .show-on-offline{opacity: 1;}
+			 .circle text[data-mode="play"] .show-on-play{opacity: 1;}
+			 .circle text[data-mode="pause"] .show-on-pause{opacity: 1;}
+
 			.circle svg { 
 			
 			  -webkit-animation-name: rotate;

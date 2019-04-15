@@ -3,7 +3,6 @@ const circleText = document.querySelector('#circle text');
 const circleTextPath = document.querySelector('#circle textPath');
 const svg = document.querySelector('.icon-play');
 const svgPath = svg.querySelector('path');
-const circleTextOptions = {pause: "Back to Live Broadcast. Back to Live Broadcast. ", play: "Pause Broadcast. Pause Broadcast. Pause Broadcast. ", offline: "Sorry… No Broadcast Now… Come Back Later… "};
 const audioState = {playing: false, muted: false, volume: 1};
 window.addEventListener("message", receiveMessage, false);
 
@@ -24,10 +23,8 @@ function handlePlay(value) {
   value !== undefined ? audioState.playing = value : audioState.playing = !audioState.playing;
   if (audioState.playing) {
     circleText.setAttribute('data-mode', 'play');
-    circleTextPath.innerHTML = circleTextOptions.play;
   } else {
     circleText.setAttribute('data-mode', 'pause');
-    circleTextPath.innerHTML = circleTextOptions.pause;
   }
   togglePlay();
   handleMute();

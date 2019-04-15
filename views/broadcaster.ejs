@@ -12,6 +12,8 @@
 	<h1><%= title %></h1>
 	<button onclick="asPresenter()">Broadcast</button>
 	<input type="text" id="debug">
+	<button onclick="stopRecording()">Stop Broadcasting</button>
+
 
 	<script type="text/javascript">
 		var mySocket = io("/", {transports:['websocket']});
@@ -44,6 +46,10 @@
 			}
 
 			presenterMedia.startRecording();
+		}
+
+		function stopRecording() {
+			presenterMedia.stopRecording();
 		}
 		
 	</script>

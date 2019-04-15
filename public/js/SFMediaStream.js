@@ -781,6 +781,8 @@
   
           scope.bufferHeader = null;
           scope.recording = false;
+          /* Asi - added for start again*/
+          scope.mediaGranted = false;
       };
   }
   ScarletsMediaEffect.chorus = function(sourceNode){
